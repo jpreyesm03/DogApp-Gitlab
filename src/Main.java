@@ -15,6 +15,10 @@ public class Main {
             System.out.print("Enter inputs(ROW,COLUMN): ");
             String coordinates = scanner.nextLine();
 
+            if (coordinates.equals("help"))
+            {
+
+            }
 
             game.playGame(coordinates);
 
