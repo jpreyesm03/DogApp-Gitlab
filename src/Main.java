@@ -3,23 +3,54 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        /*
+
 
         Scanner scanner = new Scanner(System.in);
-        Game game = new Game()
         System.out.print("Enter your desired difficulty: ");
         String diff = scanner.nextLine();
+        Game game = new Game(diff);
 
-        System.out.print("Enter your age: ");
-        int age = scanner.nextInt();
+        while(!game.isGameOver())
+        {
+            System.out.print("Enter inputs(ROW,COLUMN): ");
+            String coordinates = scanner.nextLine();
 
-        System.out.println("Hello, " + name + "! You are " + age + " years old.");
+            if (coordinates.equals("help"))
+            {
+
+            }
+
+            game.playGame(coordinates);
+
+        }
 
         scanner.close();
-        */
+        if (game.won())
 
-        int[][] a = new int[10][10];
-        System.out.println(a);
+        {
+            System.out.println("You won!");
+        }
+
+        else
+        {
+            System.out.println("You lost!");
+        }
+
+
+        /*
+        for(int y =0;y<11;y++)
+        {
+            for(int x=0;x<11;x++)
+                Tile tile = new Tile(x,y);
+                board.getTiles[x][y] = tile;
+        }
+
+        crea
+
+         */
+
+
+
     }
 
 }

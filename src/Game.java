@@ -4,8 +4,10 @@ public class Game {
 
     private GameDifficulty difficulty;
     private boolean firstInput;
+
+
     private ArrayList<String> coordinates;
-    private boolean gameOver;
+    private boolean gameOver = false;
 
     public Game(String difficulty) {
         if (difficulty.equals("Easy")) {
@@ -20,6 +22,10 @@ public class Game {
         }
 
 
+    }
+
+    public boolean isGameOver() {
+        return gameOver;
     }
 
     public void playGame(String coords)
@@ -39,6 +45,7 @@ public class Game {
 
     private void reveal()
     {
+        gameOver = true;
 
     }
 
@@ -57,14 +64,16 @@ public class Game {
 
     }
 
-    private void newGame()
+    public void newGame()
     {
+        gameOver=false;
 
     }
 
-    private boolean won()
+    public boolean won()
     {
-        return false;
+       gameOver=true;
+       return true;
     }
 
     private GameBoard getBoard()
