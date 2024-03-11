@@ -16,7 +16,7 @@ public class Input {
         return flag;
     }
 
-    public void getInputs(String rawCoords) throws NumberFormatException
+    public int[] getInputs(String rawCoords) throws NumberFormatException
     {
         try {
             if (rawCoords.equals("help")) {
@@ -38,11 +38,13 @@ public class Input {
         }
         catch (NumberFormatException e )
         {
-            currentInputs[0] = -1;
-            currentInputs[1] = -1;
-            throw new NumberFormatException("Wrong inputs, please type again");
+            currentInputs[0] = -2;
+            currentInputs[1] = -2;
+            throw new NumberFormatException();
 
         }
+
+        return currentInputs;
 
 
 
