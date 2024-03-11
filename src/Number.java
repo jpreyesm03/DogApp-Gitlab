@@ -1,6 +1,10 @@
 public class Number extends Tile {
     private int neighbors;
 
+    protected Number(int row, int column) {
+        super(row, column);
+    }
+
     public boolean open() {
         return true;
     }
