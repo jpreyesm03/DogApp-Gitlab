@@ -29,6 +29,7 @@ public class Game {
 
     public void playGame(String coords)
     {
+
         //Bunch of ifs... whatever whatever
 
         if (coords[0].equals("F")) {
