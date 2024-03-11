@@ -4,6 +4,9 @@ public class Game {
 
     private GameDifficulty difficulty;
     private boolean firstInput;
+    private Input input;
+    private int i=0;
+    private int[] currentInputs;
 
 
     private ArrayList<String> coordinates;
@@ -21,6 +24,9 @@ public class Game {
             this.difficulty = GameDifficulty.MEDIUM;
         }
 
+        Input input = new Input();
+
+
 
     }
 
@@ -30,6 +36,7 @@ public class Game {
 
     public void playGame(String coords)
     {
+        currentInputs = input.getInputs(coords);
 
     }
 
