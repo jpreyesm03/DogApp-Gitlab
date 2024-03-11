@@ -3,6 +3,7 @@ public class Visualization {
 
 
     //Methods
+    //Constructor... needed?
     public Visualization() {
 
     }
@@ -18,7 +19,15 @@ public class Visualization {
                     }
                     else {
                         if (tile.getReveal()) {
-                            System.out.print(" " + tile.getNeighbors() + " ");
+                            int neighbors = tile.getNeighbors();
+
+                            if (neighbors == 0 ) {
+                                System.out.print(" . ");
+                            }
+                            else {
+                                System.out.print(" " + neighbors + " ");
+                            }
+
                         }
                         else {
                             System.out.print(" - ");
@@ -28,10 +37,21 @@ public class Visualization {
                 }
                 else {
                     if (tile instanceof Bomb) {
-                        System.out.print(" B ");
+                        if (!tile.getClickable()) {
+                            System.out.print(" X ");
+                        } else {
+                            System.out.print(" B ");
+                        }
                     }
                     else {
-                        System.out.print(" " + tile.getNeighbors() + " ");
+                        int neighbors = tile.getNeighbors();
+
+                        if (neighbors == 0 ) {
+                            System.out.print(" . ");
+                        }
+                        else {
+                            System.out.print(" " + neighbors + " ");
+                        }
                     }
                 }
             }
