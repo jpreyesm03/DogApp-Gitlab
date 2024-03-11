@@ -18,8 +18,8 @@ public class Main {
         scanner.close();
         */
 
-        int[][] a = new int[10][10];
-        System.out.println(a);
+        Tile[][] a = new Tile[10][10];
+        System.out.println(a[]);
     }
 
 }

@@ -7,6 +7,8 @@ public class Game {
     private ArrayList<String> coordinates;
     private boolean gameOver;
 
+    private GameBoard board;
+
     public Game(String difficulty) {
         if (difficulty.equals("Easy")) {
             this.difficulty = GameDifficulty.EASY;
@@ -19,11 +21,19 @@ public class Game {
             this.difficulty = GameDifficulty.MEDIUM;
         }
 
+        board = new GameBoard(rows, columns);
+
 
     }
 
+
     public void playGame(String coords)
     {
+        //Bunch of ifs... whatever whatever
+
+        if (coords[0].equals("F")) {
+            board.getTile(coords).flag();
+        }
 
     }
 

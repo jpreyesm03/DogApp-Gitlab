@@ -1,14 +1,24 @@
-public abstract class Tile {
+public class Tile {
 
     //Attributes
-    private boolean revealed;
-    private boolean clickable;
-    private boolean flag;
-    private GameBoard board;
+    protected boolean revealed;
+    protected boolean clickable;
+    protected boolean flag;
+    protected GameBoard board;
+
+    protected int row;
+    protected int column;
 
     //Methods
 
-    protected abstract boolean open();
+    protected Tile(int row, int column) {
+        this.row = row;
+        this.column = column;
+    }
+
+    protected boolean open() {
+        return false;
+    }
 
     protected void flag() {
         setClickable(false);
@@ -30,6 +40,16 @@ public abstract class Tile {
     protected boolean getClickable() {
         return clickable;
     }
+
+    protected int getRow() {
+        return row;
+    }
+
+    protected int getColumn() {
+        return column;
+    }
+
+
 
 
 
