@@ -21,7 +21,7 @@ public class Game {
             this.difficulty = GameDifficulty.MEDIUM;
         }
 
-        board = new GameBoard(rows, columns);
+        //board = new GameBoard(rows, columns);
 
 
     }
@@ -32,9 +32,9 @@ public class Game {
 
         //Bunch of ifs... whatever whatever
 
-        if (coords[0].equals("F")) {
-            board.getTile(coords).flag();
-        }
+//        if (coords[0].equals("F")) {
+//            board.getTile(coords).flag();
+//        }
 
     }
 

@@ -14,6 +14,7 @@ public class Tile {
     protected Tile(int row, int column) {
         this.row = row;
         this.column = column;
+        clickable = true;
     }
 
     protected boolean open() {
@@ -48,6 +49,8 @@ public class Tile {
     protected int getColumn() {
         return column;
     }
+
+
 
 
 
