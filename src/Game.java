@@ -5,6 +5,8 @@ public class Game {
     private GameDifficulty difficulty;
     private boolean firstInput;
 
+    private GameBoard board;
+
 
     private ArrayList<String> coordinates;
     private boolean gameOver = false;
@@ -76,9 +78,9 @@ public class Game {
        return true;
     }
 
-    private GameBoard getBoard()
+    public GameBoard getBoard()
     {
-        return null;
+        return board;
     }
 
 
