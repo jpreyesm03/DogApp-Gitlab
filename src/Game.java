@@ -28,13 +28,13 @@ public class Game {
 
         if(this.difficulty.equals(GameDifficulty.EASY))
         {
-            GameBoard board = new GameBoard(5,5);
+            GameBoard board = new GameBoard(8,8, 10, input.getInputs()[0], input.getInputs()[1]);
         } else if (this.difficulty.equals(GameDifficulty.MEDIUM))
         {
-            GameBoard board = new GameBoard(10,10);
+            GameBoard board = new GameBoard(16,16, 40, input.getInputs()[0], input.getInputs()[1]);
         } else if (this.difficulty.equals(GameDifficulty.HARD))
         {
-            GameBoard board = new GameBoard(50,50);
+            GameBoard board = new GameBoard(16,30, 99, input.getInputs()[0], input.getInputs()[1]);
         }
 
 
