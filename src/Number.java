@@ -1,5 +1,3 @@
-import java.util.Random;
-
 import static java.lang.Math.abs;
 
 public class Number extends Tile {
@@ -24,9 +22,7 @@ public class Number extends Tile {
                 }
             }
         }
-        else {
-            return true;
-        }
+        return true;
     }
 
     public void neighbors(Tile[][] tiles) {
