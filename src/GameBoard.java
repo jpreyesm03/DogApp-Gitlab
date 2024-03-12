@@ -5,6 +5,7 @@ public class GameBoard {
     //Attributes
     private Tile[][] tiles;
     private ArrayList<Integer[]> bombCoordinates;
+    private boolean gameOver = false;
 
     //Constructor
     public GameBoard(int rows, int columns, int bombs, int inputRow, int inputColumn) {
@@ -35,9 +36,11 @@ public class GameBoard {
         return tiles;
     }
 
+    public boolean isGameOver() {
+        return gameOver;
+    }
 
-
-
-
-
+    public void setGameOver(boolean gameOver) {
+        this.gameOver = gameOver;
+    }
 }

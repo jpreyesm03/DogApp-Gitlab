@@ -16,21 +16,21 @@ public class Input {
         return flag;
     }
 
-    public int[] getInputs(String rawCoords) throws NumberFormatException
+    public int[] getInputs(String rawCoordinates) throws NumberFormatException
     {
         try {
-            if (rawCoords.equals("help")) {
+            if (rawCoordinates.equals("help")) {
                 currentInputs[0] = -1;
                 currentInputs[1] = -1;
-            } else if (rawCoords.charAt(0) == 'F') {
+            } else if (rawCoordinates.charAt(0) == 'F') {
                 flag = true;
-                String[] coordinatesArray = rawCoords.split(" ");
+                String[] coordinatesArray = rawCoordinates.split(" ");
                 currentInputs[0] = Integer.parseInt(coordinatesArray[1]);
                 currentInputs[1] = Integer.parseInt(coordinatesArray[2]);
 
 
             } else {
-                String[] coordinatesArray = rawCoords.split(" ");
+                String[] coordinatesArray = rawCoordinates.split(" ");
                 currentInputs[0] = Integer.parseInt(coordinatesArray[0]);
                 currentInputs[1] = Integer.parseInt(coordinatesArray[1]);
 

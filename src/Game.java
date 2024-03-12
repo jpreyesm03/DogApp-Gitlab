@@ -13,6 +13,8 @@ public class Game {
 
     private GameBoard board;
 
+    private Visualization visualization = new Visualization("🚩","💣","","‍☠️", "", "");
+
     public Game(String difficulty) {
         if (difficulty.equals("Easy")) {
             this.difficulty = GameDifficulty.EASY;
@@ -25,6 +27,7 @@ public class Game {
             this.difficulty = GameDifficulty.MEDIUM;
         }
         Input input = new Input();
+
 
 
 
@@ -75,6 +78,7 @@ public class Game {
         }
         i++;
 
+        visualization.visualize(board);
     }
 
     private void firstPlay(int x,int y)
@@ -123,6 +127,7 @@ public class Game {
     public boolean won()
     {
        gameOver=true;
+       board.setGameOver(true);
        return true;
     }
 
