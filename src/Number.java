@@ -1,7 +1,10 @@
 import java.util.Random;
 
+import static java.lang.Math.abs;
+
 public class Number extends Tile {
     private int neighbors;
+
 
     protected Number(int row, int column) {
         super(row, column);
@@ -9,11 +12,35 @@ public class Number extends Tile {
     }
 
     public boolean open() {
-        return true;
+        setReveal(true); // Do we want to check if its flagged here?
+        if (neighbors == 0) {
+            for (int r=0; r < tiles.length; r++) {
+                for (int c = 0; c < tiles[r].length; c++) {
+                    if (!(r == getRow() && c == getColumn())) {
+                        if ((abs(r - getColumn()) <= 1 && abs(c - getColumn()) <= 1) && !getReveal()) {
+                            tiles[r][c].open();
+                        }
+                    }
+                }
+            }
+        }
+        else {
+            return true;
+        }
     }
 
-    public int neighbors() {
-        return -1;
+    public void neighbors(Tile[][] tiles) {
+        int nrNeighbors = 0;
+            for (int r=0; r < tiles.length; r++) {
+                for (int c = 0; c < tiles[r].length; c++) {
+                    if (!(r == getRow() && c == getColumn())) {
+                        if ((abs(r - getColumn()) <= 1 && abs(c - getColumn()) <= 1) && tiles[r][c] instanceof Bomb) {
+                            nrNeighbors++;
+                        }
+                    }
+                }
+            }
+        this.neighbors = nrNeighbors;
     }
 
     public int getNeighbors() {

@@ -24,18 +24,9 @@ public class Game {
             System.out.println("Wrong input for difficulty selection. Difficulty automatically set to medium.");
             this.difficulty = GameDifficulty.MEDIUM;
         }
-            Input input = new Input();
+        Input input = new Input();
 
-        if(this.difficulty.equals(GameDifficulty.EASY))
-        {
-            GameBoard board = new GameBoard(8,8, 10, input.getInputs()[0], input.getInputs()[1]);
-        } else if (this.difficulty.equals(GameDifficulty.MEDIUM))
-        {
-            GameBoard board = new GameBoard(16,16, 40, input.getInputs()[0], input.getInputs()[1]);
-        } else if (this.difficulty.equals(GameDifficulty.HARD))
-        {
-            GameBoard board = new GameBoard(16,30, 99, input.getInputs()[0], input.getInputs()[1]);
-        }
+
 
 
     }
@@ -47,6 +38,20 @@ public class Game {
 
     public void playGame(String coords)
     {
+        if(this.difficulty.equals(GameDifficulty.EASY))
+        {
+            GameBoard board = new GameBoard(8,8, 10, input.getInputs(coords)[0], input.getInputs(coords)[1]);
+        } else if (this.difficulty.equals(GameDifficulty.MEDIUM))
+        {
+            GameBoard board = new GameBoard(16,16, 40, input.getInputs(coords)[0], input.getInputs(coords)[1]);
+        } else if (this.difficulty.equals(GameDifficulty.HARD))
+        {
+            GameBoard board = new GameBoard(16,30, 99, input.getInputs(coords)[0], input.getInputs(coords)[1]);
+        }
+
+
+
+
         int[] currentCoords = input.getInputs(coords);
         if(currentCoords[0] == -1)
         {
@@ -121,10 +126,7 @@ public class Game {
        return true;
     }
 
-
-
-
-
-
-
+    public GameBoard getBoard() {
+        return board;
+    }
 }

@@ -12,12 +12,15 @@ public class GameBoard {
         bombCoordinates = new RandomCoordinates(rows, columns, bombs, inputRow, inputColumn).getRandomCoordinates();
         for (Integer[] b: bombCoordinates) {
             tiles[b[0]][b[1]] = new Bomb(b[0], b[1]);
+            tiles[b[0]][b[1]].setTiles(tiles);
         }
 
         for (int r=0; r < rows; r++) {
             for (int c=0; c < columns; c++) {
                 if (!(tiles[r][c] instanceof Bomb)) {
                     tiles[r][c] = new Number(r,c);
+                    ((Number) tiles[r][c]).neighbors(tiles);
+
                 }
             }
         }

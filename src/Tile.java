@@ -1,10 +1,10 @@
-public class Tile {
+public abstract class Tile {
 
     //Attributes
     protected boolean revealed;
     protected boolean clickable;
     protected boolean flag;
-    protected GameBoard board;
+    protected Tile[][] tiles;
 
     protected int row;
     protected int column;
@@ -17,13 +17,15 @@ public class Tile {
         clickable = true;
     }
 
-    protected boolean open() {
-        return false;
-    }
+    protected abstract boolean open();
 
     protected void flag() {
         setClickable(false);
         flag = true;
+    }
+
+    public void setTiles(Tile[][] tiles) {
+        this.tiles = tiles;
     }
 
     protected void setReveal(boolean reveal) {
