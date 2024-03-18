@@ -36,7 +36,7 @@ public class RandomCoordinates {
 
     private boolean isRepeated(Integer[] tuple) {
         if (tuple[0] == null && tuple[1] == null) {
-            return true;
+            return false;
         }
         else {
             for (Integer[] bombPos: randomCoordinates) {
