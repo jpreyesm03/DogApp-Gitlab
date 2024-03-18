@@ -35,7 +35,7 @@ public class Game {
 
 
 
-        Input input = new Input();
+        input = new Input();
         playGame();
 
 
@@ -49,6 +49,7 @@ public class Game {
 
     public void playGame()
     {
+
         gameOver = false;
         System.out.print("Enter your first coordinates: ");
         String firstinp = scanner.nextLine();
@@ -63,16 +64,17 @@ public class Game {
 
         if(this.difficulty.equals(GameDifficulty.EASY))
         {
-            board = new GameBoard(8,8, 10, input.getInputs(firstinp)[0], input.getInputs(firstinp)[1]);
+            board = new GameBoard(8,8, 10, input.getInputs(firstinp)[1], input.getInputs(firstinp)[0]);
         } else if (this.difficulty.equals(GameDifficulty.MEDIUM))
         {
-            board = new GameBoard(16,16, 40, input.getInputs(firstinp)[0], input.getInputs(firstinp)[1]);
+            board = new GameBoard(16,16, 40, input.getInputs(firstinp)[1], input.getInputs(firstinp)[0]);
         } else if (this.difficulty.equals(GameDifficulty.HARD))
         {
-            board = new GameBoard(16,30, 99, input.getInputs(firstinp)[0], input.getInputs(firstinp)[1]);
+            board = new GameBoard(16,30, 99, input.getInputs(firstinp)[1], input.getInputs(firstinp)[0]);
         }
 
         while (!isGameOver()) {
+            input.setFlag(false);
             Scanner scanner = new Scanner(System.in);
             System.out.print("Enter your coordinates: ");
             String rawCoordinates = scanner.nextLine();
@@ -91,8 +93,17 @@ public class Game {
                 else if (currentCoords[0] == -2) {
                 System.out.println("Wrong inputs, please type again");
             }
-                 else {
-                    otherPlay(currentCoords[0], currentCoords[1]);
+                 else
+                 {
+                    if (input.getFlag())
+                    {
+                        board.getTile(currentCoords[1], currentCoords[0]).flag();
+                    }
+                    else
+                    {
+                        otherPlay(currentCoords[1], currentCoords[0]);
+                    }
+
                 }
 
             visualization.visualize(board);

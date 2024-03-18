@@ -7,7 +7,9 @@ import static java.lang.Math.abs;
 
 public class Main {
     public static void main(String[] args) {
+        Game game = new Game();
 
+        /*
         GameBoard board = new GameBoard(9, 9, 10, 6, 7);
         board.getTile(6,7).open();
         System.out.println(((Number) board.getTile(6,7)).getNeighbors());
@@ -21,6 +23,8 @@ public class Main {
             }
 //
         }
+
+         */
 
 
     }

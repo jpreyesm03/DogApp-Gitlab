@@ -21,8 +21,17 @@ public abstract class Tile {
     protected abstract boolean open();
 
     protected void flag() {
-        setClickable(false);
-        flag = true;
+        if (flag)
+        {
+            setClickable(true);
+            flag = false;
+        }
+        else
+        {
+            setClickable(false);
+            flag = true;
+        }
+
     }
 
     public void setTiles(Tile[][] tiles) {
