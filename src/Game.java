@@ -33,6 +33,7 @@ public class Game {
         Input input = new Input();
 
 
+
         if(this.difficulty.equals(GameDifficulty.EASY))
         {
             GameBoard board = new GameBoard(8,8, 10, input.getInputs(rawCoordinates)[0], input.getInputs(rawCoordinates)[1]);
