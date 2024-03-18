@@ -17,87 +17,76 @@ public class Visualization {
     public Visualization(String visualizeFlag, String visualizeBomb, String visualizeNumber, String visualizeWrongFlag, String visualizeEmptyTile, String visualizeUnknown) {
         if (visualizeFlag.isEmpty()) {
             this.visualizeFlag = "F";
-        }
-        else {
+        } else {
             this.visualizeFlag = visualizeFlag;
         }
         if (visualizeBomb.isEmpty()) {
             this.visualizeBomb = "B";
-        }
-        else {
+        } else {
             this.visualizeBomb = visualizeBomb;
         }
         if (visualizeNumber.equals("Emoji") || visualizeNumber.equals("emoji") || visualizeNumber.equals("EMOJI") || visualizeNumber.equals("Emojis") || visualizeNumber.equals("emojis") || visualizeNumber.equals("EMOJIS")) {
             this.visualizeNumber = " 1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣";
-        }
-        else {
-           this. visualizeNumber = " 12345678";
+        } else {
+            this.visualizeNumber = " 12345678";
         }
         if (visualizeWrongFlag.isEmpty()) {
             this.visualizeWrongFlag = "X";
-        }
-        else {
+        } else {
             this.visualizeWrongFlag = visualizeWrongFlag;
         }
         if (visualizeEmptyTile.isEmpty()) {
             this.visualizeEmptyTile = ".";
-        }
-        else {
+        } else {
             this.visualizeEmptyTile = visualizeEmptyTile;
         }
         if (visualizeUnknown.isEmpty()) {
             this.visualizeUnknown = "-";
-        }
-        else {
+        } else {
             this.visualizeUnknown = visualizeUnknown;
         }
-
-
 
 
     }
 
     public void visualize(GameBoard board) {
+
         Tile[][] tiles = board.getTiles();
-        for (int row=0; row < tiles.length; row++) {
-            for (int column=0; column < tiles[row].length; column++) {
+        horizontalDivider(tiles);
+
+        for (int row = 0; row < tiles.length; row++) {
+            System.out.print(row + " |");
+            for (int column = 0; column < tiles[row].length; column++) {
                 Tile tile = tiles[row][column];
                 if (!board.isGameOver()) {
                     if (!tile.getClickable()) {
-                        System.out.print(" " + visualizeFlag+ " ");
-                    }
-                    else {
+                        System.out.print(" " + visualizeFlag + " ");
+                    } else {
                         if (tile.getReveal()) {
                             int neighbors = ((Number) tile).getNeighbors();
 
-                            if (neighbors == 0 ) {
-                                System.out.print(" " + visualizeEmptyTile+ " ");
-                            }
-                            else {
+                            if (neighbors == 0) {
+                                System.out.print(" " + visualizeEmptyTile + " ");
+                            } else {
                                 System.out.print(" " + visualizeNumber.charAt(neighbors) + " ");
                             }
 
-                        }
-                        else {
+                        } else {
                             System.out.print(" " + visualizeUnknown + " ");
                         }
 
                     }
-                }
-                else {
+                } else {
                     if (tile instanceof Bomb) {
                         if (!tile.getClickable()) {
                             System.out.print(" " + visualizeWrongFlag + " ");
+                        } else {
+                            System.out.print(" " + visualizeBomb + " ");
                         }
-                        else {
-                            System.out.print(" " + visualizeBomb+ " ");
-                        }
-                    }
-                    else {
+                    } else {
                         if (!tile.getClickable()) {
-                            System.out.print(" " + visualizeFlag+ " ");
-                        }
-                        else {
+                            System.out.print(" " + visualizeFlag + " ");
+                        } else {
                             int neighbors = ((Number) tile).getNeighbors();
 
 
@@ -112,6 +101,18 @@ public class Visualization {
             }
             System.out.println();
         }
+    }
+
+    private void horizontalDivider(Tile[][] tiles) {
+        System.out.print("   ");
+        for (int i = 0; i < tiles.length - 1; i++) {
+            System.out.print(" " + i + " ");
+        }
+        System.out.print(" " + (tiles.length - 1) + "\n");
+        for (int i = 0; i < tiles.length * 3 + 3; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
     }
 
 }
