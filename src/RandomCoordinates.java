@@ -23,9 +23,14 @@ public class RandomCoordinates {
     private void randomTuples() {
         while (randomCoordinates.size() < bombs) {
             Integer[] localTuple = new Integer[2];
+            Integer bombRow = new Random().nextInt(rows);
+            Integer bombColumn = new Random().nextInt(columns);
+            localTuple[0] = bombRow;
+            localTuple[1] = bombColumn;
+
             while (isRepeated(localTuple) || firstTryViolation(localTuple)) {
-                Integer bombRow = new Random().nextInt(rows);
-                Integer bombColumn = new Random().nextInt(columns);
+                bombRow = new Random().nextInt(rows);
+                bombColumn = new Random().nextInt(columns);
                 localTuple[0] = bombRow;
                 localTuple[1] = bombColumn;
             }
@@ -49,7 +54,7 @@ public class RandomCoordinates {
     }
 
     private boolean firstTryViolation(Integer[] localTuple) {
-        if (abs(localTuple[0] - inputRow) <= 1 && abs(localTuple[1] - inputColumn) <= 1) {
+        if (abs(localTuple[0] - inputRow) == 0 && abs(localTuple[1] - inputColumn) == 0) {
             return true;
         }
         else {

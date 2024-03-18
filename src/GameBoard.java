@@ -22,8 +22,8 @@ public class GameBoard {
             for (int c=0; c < columns; c++) {
                 if (!(tiles[r][c] instanceof Bomb)) {
                     tiles[r][c] = new Number(r,c);
+                    tiles[r][c].setTiles(tiles);
                     ((Number) tiles[r][c]).neighbors(tiles);
-
                 }
             }
         }
@@ -66,5 +66,9 @@ public class GameBoard {
 
     public void setGameOver(boolean gameOver) {
         this.gameOver = gameOver;
+    }
+
+    public ArrayList<Integer[]> getBombCoordinates() {
+        return bombCoordinates;
     }
 }
