@@ -10,7 +10,7 @@ public class Number extends Tile {
     }
 
     public boolean open() {
-        setReveal(true); // Do we want to check if its flagged here?
+
         if (neighbors == 0) {
             for (int r=0; r < tiles.length; r++) {
                 for (int c = 0; c < tiles[r].length; c++) {

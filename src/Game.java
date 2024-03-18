@@ -33,21 +33,10 @@ public class Game {
             this.difficulty = GameDifficulty.MEDIUM;
         }
 
-        System.out.print("Enter your first coordinates: ");
-        String firstinp = scanner.nextLine();
-        playGame(firstinp);
-
 
 
         Input input = new Input();
-
-
-
-
-
-
-
-
+        playGame();
 
 
 
@@ -58,8 +47,12 @@ public class Game {
         return gameOver;
     }
 
-    public void playGame(String firstinp)
+    public void playGame()
     {
+        gameOver = false;
+        System.out.print("Enter your first coordinates: ");
+        String firstinp = scanner.nextLine();
+
 
         while (input.getInputs(firstinp )[0] == -1 || input.getInputs(firstinp)[0] == -2 || firstinp.charAt(0) == 'F')
         {
@@ -88,26 +81,35 @@ public class Game {
             int[] currentCoords = input.getInputs(rawCoordinates);
             if (currentCoords[0] == -1) {
                 System.out.println("Help:");
-                help();
-            } else if (currentCoords[0] == -2) {
+                System.out.println("Flag info, format, type of inputs etc, write complete later");
+
+            }
+            else if (currentCoords[0] == -3)
+            {
+                playGame();
+            }
+                else if (currentCoords[0] == -2) {
                 System.out.println("Wrong inputs, please type again");
-            } else {
-                if (firstInput) {
-                    firstPlay(currentCoords[0], currentCoords[1]);
-                    firstInput = false;
-                } else {
+            }
+                 else {
                     otherPlay(currentCoords[0], currentCoords[1]);
                 }
-            }
 
             visualization.visualize(board);
+
+                 if (board.unopenedTiles() == board.getBombsNr())
+                 {
+                     gameOver = true;
+                     board.setGameOver(true);
+                 }
+
+
+
+
         }
     }
 
-    private void firstPlay(int x,int y)
-    {
 
-    }
 
     private void otherPlay(int x,int y)
     {
@@ -115,6 +117,10 @@ public class Game {
        if(playedTile.getClickable())
        {
            playedTile.setReveal(true);
+           if (!playedTile.open()) {
+               gameOver = true;
+               board.setGameOver(true);
+           }
        }
        else {
            System.out.println("Not clickable tile!");
@@ -123,32 +129,9 @@ public class Game {
 
     }
 
-    private void reveal()
-    {
-        gameOver = true;
-
-    }
-
-    private void help()
-    {
-
-    }
 
 
 
-
-    public void newGame()
-    {
-        gameOver=false;
-
-    }
-
-    public boolean won()
-    {
-       gameOver=true;
-       board.setGameOver(true);
-       return true;
-    }
 
     public GameBoard getBoard() {
         return board;
