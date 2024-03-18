@@ -3,52 +3,25 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
 
+import static java.lang.Math.abs;
+
 public class Main {
     public static void main(String[] args) {
 
 
 
-        Game game = new Game();
+        GameBoard board = new GameBoard(9, 9, 30, 6, 7);
+        board.getTile(6,7).open();
+        System.out.println(((Number) board.getTile(6,7)).getNeighbors());
+        Visualization visualization = new Visualization("🚩","💣","","‍☠️", "0", "");
 
-
-
-
-
-//       while(!game.isGameOver())
-//        {
-//            System.out.print("Enter inputs(ROW,COLUMN): ");
-//            String coordinates = scanner.nextLine();
+        visualization.visualize(board);
+        for (Integer[] localTuple: board.getBombCoordinates()) {
+            if (abs(localTuple[0] - 6) <= 1 && abs(localTuple[1] - 7) <= 1) {
+                System.out.print("(" + localTuple[0] + ", " + localTuple[1] + "), ");
+            }
 //
-//            game.playGame(coordinates);
-//
-//     }
-
-//        scanner.close();
-//        if (game.won())
-//
-//        {
-//            System.out.println("You won!");
-//        }
-//
-//        else
-//        {
-//            System.out.println("You lost!");
-//        }
-//
-//
-//        /*
-//        for(int y =0;y<11;y++)
-//        {
-//            for(int x=0;x<11;x++)
-//                Tile tile = new Tile(x,y);
-//                board.getTiles[x][y] = tile;
-//        }
-//
-//        crea
-//
-//         */
-
-
+        }
 
 
 

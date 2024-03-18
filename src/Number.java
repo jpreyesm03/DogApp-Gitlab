@@ -19,7 +19,7 @@ public class Number extends Tile {
                     }
                     else {
                         if (!(r == getRow() && c == getColumn())) {
-                            if ((abs(r - getColumn()) <= 1 && abs(c - getColumn()) <= 1) && !getReveal()) {
+                            if ((abs(r - getRow()) <= 1 && abs(c - getColumn()) <= 1) && !getReveal()) {
                                 tiles[r][c].open();
                             }
                         }
@@ -36,7 +36,7 @@ public class Number extends Tile {
             for (int r=0; r < tiles.length; r++) {
                 for (int c = 0; c < tiles[r].length; c++) {
                     if (!(r == getRow() && c == getColumn())) {
-                        if ((abs(r - getColumn()) <= 1 && abs(c - getColumn()) <= 1) && tiles[r][c] instanceof Bomb) {
+                        if ((abs(r - getRow()) <= 1 && abs(c - getColumn()) <= 1) && tiles[r][c] instanceof Bomb) {
                             nrNeighbors++;
                         }
                     }
