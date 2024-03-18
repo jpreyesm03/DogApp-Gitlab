@@ -8,6 +8,7 @@ public abstract class Tile {
 
     protected int row;
     protected int column;
+    protected boolean opened;
 
     //Methods
 
@@ -52,12 +53,11 @@ public abstract class Tile {
         return column;
     }
 
+    public boolean isOpened() {
+        return opened;
+    }
 
-
-
-
-
-
-
-
+    public void setOpened(boolean opened) {
+        this.opened = opened;
+    }
 }

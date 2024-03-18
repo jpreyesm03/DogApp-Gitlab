@@ -11,6 +11,7 @@ public class Number extends Tile {
 
     public boolean open() {
         setReveal(true);
+        setOpened(true);
         if (neighbors == 0) {
             for (int r=0; r < tiles.length; r++) {
                 for (int c = 0; c < tiles[r].length; c++) {
@@ -19,7 +20,7 @@ public class Number extends Tile {
                     }
                     else {
                         if (!(r == getRow() && c == getColumn())) {
-                            if ((abs(r - getRow()) <= 1 && abs(c - getColumn()) <= 1) && !getReveal()) {
+                            if ((abs(r - getRow()) <= 1 && abs(c - getColumn()) <= 1) && !tiles[r][c].isOpened()) {
                                 tiles[r][c].open();
                             }
                         }
