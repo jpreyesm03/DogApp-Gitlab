@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Game {
 
@@ -16,17 +17,21 @@ public class Game {
     private Visualization visualization = new Visualization("🚩","💣","","‍☠️", "", "");
 
     public Game(String difficulty) {
-        if (difficulty.equals("Easy")) {
+        if (difficulty.equals("Easy") || difficulty.equals("easy") || difficulty.equals("EASY")) {
             this.difficulty = GameDifficulty.EASY;
-        } else if (difficulty.equals("Medium")) {
+        } else if (difficulty.equals("Medium") || difficulty.equals("medium") || difficulty.equals("MEDIUM")) {
             this.difficulty = GameDifficulty.MEDIUM;
-        } else if (difficulty.equals("Hard")) {
+        } else if (difficulty.equals("Hard") || difficulty.equals("hard") || difficulty.equals("HARD")) {
             this.difficulty = GameDifficulty.HARD;
         } else {
             System.out.println("Wrong input for difficulty selection. Difficulty automatically set to medium.");
             this.difficulty = GameDifficulty.MEDIUM;
         }
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter your first coordinates: ");
+        String rawCoordinates = scanner.nextLine();
         Input input = new Input();
+        input.getInputs(rawCoordinates);
 
 
 
@@ -41,16 +46,7 @@ public class Game {
 
     public void playGame(String coords)
     {
-        if(this.difficulty.equals(GameDifficulty.EASY))
-        {
-            GameBoard board = new GameBoard(8,8, 10, input.getInputs(coords)[0], input.getInputs(coords)[1]);
-        } else if (this.difficulty.equals(GameDifficulty.MEDIUM))
-        {
-            GameBoard board = new GameBoard(16,16, 40, input.getInputs(coords)[0], input.getInputs(coords)[1]);
-        } else if (this.difficulty.equals(GameDifficulty.HARD))
-        {
-            GameBoard board = new GameBoard(16,30, 99, input.getInputs(coords)[0], input.getInputs(coords)[1]);
-        }
+
 
 
 

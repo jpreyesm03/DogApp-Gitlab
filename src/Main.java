@@ -7,25 +7,23 @@ public class Main {
     public static void main(String[] args) {
 
 
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.print("Enter your desired difficulty: ");
-//        String diff = scanner.nextLine();
-//        Game game = new Game(diff);
-//
-//        while(!game.isGameOver())
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter your desired difficulty: ");
+        String diff = scanner.nextLine();
+        Game game = new Game(diff);
+
+
+
+
+//       while(!game.isGameOver())
 //        {
 //            System.out.print("Enter inputs(ROW,COLUMN): ");
 //            String coordinates = scanner.nextLine();
 //
-//            if (coordinates.equals("help"))
-//            {
-//
-//            }
-//
 //            game.playGame(coordinates);
 //
-//        }
-//
+//     }
+
 //        scanner.close();
 //        if (game.won())
 //
