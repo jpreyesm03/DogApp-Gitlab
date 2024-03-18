@@ -14,11 +14,17 @@ public class Number extends Tile {
         if (neighbors == 0) {
             for (int r=0; r < tiles.length; r++) {
                 for (int c = 0; c < tiles[r].length; c++) {
-                    if (!(r == getRow() && c == getColumn())) {
-                        if ((abs(r - getColumn()) <= 1 && abs(c - getColumn()) <= 1) && !getReveal()) {
-                            tiles[r][c].open();
+                    if (tiles[r][c] instanceof Bomb) {
+                        continue;
+                    }
+                    else {
+                        if (!(r == getRow() && c == getColumn())) {
+                            if ((abs(r - getColumn()) <= 1 && abs(c - getColumn()) <= 1) && !getReveal()) {
+                                tiles[r][c].open();
+                            }
                         }
                     }
+
                 }
             }
         }
