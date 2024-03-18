@@ -31,7 +31,21 @@ public class Game {
         System.out.print("Enter your first coordinates: ");
         String rawCoordinates = scanner.nextLine();
         Input input = new Input();
-        input.getInputs(rawCoordinates);
+
+
+        if(this.difficulty.equals(GameDifficulty.EASY))
+        {
+            GameBoard board = new GameBoard(8,8, 10, input.getInputs(rawCoordinates)[0], input.getInputs(rawCoordinates)[1]);
+        } else if (this.difficulty.equals(GameDifficulty.MEDIUM))
+        {
+            GameBoard board = new GameBoard(16,16, 40, input.getInputs(rawCoordinates)[0], input.getInputs(rawCoordinates)[1]);
+        } else if (this.difficulty.equals(GameDifficulty.HARD))
+        {
+            GameBoard board = new GameBoard(16,30, 99, input.getInputs(rawCoordinates)[0], input.getInputs(rawCoordinates)[1]);
+        }
+
+
+
 
 
 
