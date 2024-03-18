@@ -1,6 +1,8 @@
 public class Input {
     private int[] currentInputs;
     private boolean flag;
+    private int x;
+    private int y;
 
 
     public Input ()
@@ -9,6 +11,11 @@ public class Input {
         currentInputs = new int[2];
 
 
+    }
+    public void setSize(int x,int y)
+    {
+        this.x = x;
+        this.y = y;
     }
 
 
@@ -19,7 +26,7 @@ public class Input {
 
 
 
-    public int[] getInputs(String rawCoordinates) throws NumberFormatException
+    public int[] getInputs(String rawCoordinates) throws NumberFormatException, ArrayIndexOutOfBoundsException
     {
 
         try {
@@ -34,24 +41,34 @@ public class Input {
             }
 
             else if (rawCoordinates.charAt(0) == 'F') {
-                flag = true;
-                String[] coordinatesArray = rawCoordinates.split(" ");
-                currentInputs[0] = Integer.parseInt(coordinatesArray[1]);
-                currentInputs[1] = Integer.parseInt(coordinatesArray[2]);
+
+
+                    flag = true;
+                    String[] coordinatesArray = rawCoordinates.split(" ");
+                    currentInputs[0] = Integer.parseInt(coordinatesArray[1]);
+                    currentInputs[1] = Integer.parseInt(coordinatesArray[2]);
+                    if (currentInputs[1] >= x || currentInputs[0] >= y )
+                    {
+                        throw new ArrayIndexOutOfBoundsException();
+                    }
 
 
             } else {
                 String[] coordinatesArray = rawCoordinates.split(" ");
                 currentInputs[0] = Integer.parseInt(coordinatesArray[0]);
                 currentInputs[1] = Integer.parseInt(coordinatesArray[1]);
+                if (currentInputs[1] >= x || currentInputs[0] >= y )
+                {
+                    throw new ArrayIndexOutOfBoundsException();
+                }
 
             }
         }
-        catch (NumberFormatException e )
+        catch (NumberFormatException | ArrayIndexOutOfBoundsException e )
         {
             currentInputs[0] = -2;
             currentInputs[1] = -2;
-            throw new NumberFormatException();
+
 
         }
 

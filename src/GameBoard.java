@@ -37,7 +37,7 @@ public class GameBoard {
         {
             for (Tile t1: t)
             {
-                if (t1.getReveal())
+                if (!t1.isOpened())
                 {
                     i++;
                 }

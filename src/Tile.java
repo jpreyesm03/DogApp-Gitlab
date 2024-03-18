@@ -21,6 +21,7 @@ public abstract class Tile {
     protected abstract boolean open();
 
     protected void flag() {
+        if(opened) return;
         if (flag)
         {
             setClickable(true);
