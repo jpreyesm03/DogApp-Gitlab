@@ -26,6 +26,17 @@ public class Game {
             System.out.println("Wrong input for difficulty selection. Difficulty automatically set to medium.");
             this.difficulty = GameDifficulty.MEDIUM;
         }
+
+        if(this.difficulty.equals(GameDifficulty.EASY))
+        {
+            GameBoard board = new GameBoard(8,8, 10, 0, 0);
+        } else if (this.difficulty.equals(GameDifficulty.MEDIUM))
+        {
+            GameBoard board = new GameBoard(16,16, 40, 0, 0);
+        } else if (this.difficulty.equals(GameDifficulty.HARD))
+        {
+            GameBoard board = new GameBoard(16,30, 99, 0, 0);
+        }
         Input input = new Input();
 
 
@@ -41,16 +52,7 @@ public class Game {
 
     public void playGame(String coords)
     {
-        if(this.difficulty.equals(GameDifficulty.EASY))
-        {
-            GameBoard board = new GameBoard(8,8, 10, input.getInputs(coords)[0], input.getInputs(coords)[1]);
-        } else if (this.difficulty.equals(GameDifficulty.MEDIUM))
-        {
-            GameBoard board = new GameBoard(16,16, 40, input.getInputs(coords)[0], input.getInputs(coords)[1]);
-        } else if (this.difficulty.equals(GameDifficulty.HARD))
-        {
-            GameBoard board = new GameBoard(16,30, 99, input.getInputs(coords)[0], input.getInputs(coords)[1]);
-        }
+
 
 
 
@@ -83,6 +85,7 @@ public class Game {
 
     private void firstPlay(int x,int y)
     {
+
 
     }
 
