@@ -15,7 +15,7 @@ public class Game {
     private GameBoard board;
     private Scanner scanner;
 
-    private Visualization visualization = new Visualization("🚩","💣","","‍☠️", "", "");
+    private Visualization visualization = new Visualization("","","","", "", ""); //new Visualization("🚩","💣","","‍☠️", "", "");
 
     public Game() {
         input = new Input();
@@ -70,7 +70,7 @@ public class Game {
 
         if(this.difficulty.equals(GameDifficulty.EASY))
         {
-            board = new GameBoard(4,4, 1, input.getInputs(firstinp)[1], input.getInputs(firstinp)[0]);
+            board = new GameBoard(8,8, 10, input.getInputs(firstinp)[1], input.getInputs(firstinp)[0]);
         } else if (this.difficulty.equals(GameDifficulty.MEDIUM))
         {
             board = new GameBoard(16,16, 40, input.getInputs(firstinp)[1], input.getInputs(firstinp)[0]);
@@ -129,6 +129,9 @@ public class Game {
                 gameOver = true;
                 board.setGameOver(true);
                 System.out.println("You win!");
+            }
+            else if (isGameOver()){
+                System.out.println("You lost!");
             }
 
 
